@@ -11,13 +11,14 @@ async def excel_write(address: str, quantity: float, excel):
     excel.sheet.append(data)
 
 
-async def request_send(address: str, data: str, excel):
+async def request_send(address: str, data: str, excel, semaphore):
     try:
         headers = {
             'next-action': '6817e8f24aae7e8aed1d5226e9b368ab8c1ded5d',
         }
 
         async with aiohttp.ClientSession(headers=headers) as session:
+            await semaphore.acquire()
             response = await session.post(
                 f'https://airdrop.altlayer.io/', data=data)
 
@@ -56,20 +57,22 @@ async def make_data(address):
     return data
 
 
-async def make_request(wallets: list, excel):
+async def make_request(wallets: list, excel, semaphore):
     tasks = [
         request_send(address,
                      await make_data(address),
-                     excel)
+                     excel,
+                     semaphore)
         for address in wallets]
 
     await asyncio.gather(*tasks)
 
 
 def main_altlayer(wallets: list[str], excel):
+    semaphore = asyncio.Semaphore(value=200)
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    loop.run_until_complete(make_request(wallets, excel))
+    loop.run_until_complete(make_request(wallets, excel, semaphore))
 
     excel.workbook.save('result/AltLayer.xlsx')
     logger.info('Check is over. The results are recorded in result/AltLayer.xlsx')
