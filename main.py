@@ -3,18 +3,13 @@ import loguru
 from excel.excel import Excel
 from project import *
 from data.config import *
-import questionary
+from get_modul import MODULS, Modul
 from add_loguru import add_logger
 
 
 def main():
-    answer = questionary.select(
-        "What do you want to do?",
-        choices=[
-            "altlayer"
-        ],
-        pointer='►'
-    ).ask()
+
+    project, func_run = MODULS[Modul.MODUL]
 
     with open('data/wallets_evm.txt') as file:
         wallets = [row.strip() for row in file]
@@ -22,8 +17,8 @@ def main():
     add_logger()
     loguru.logger.info(f'Found {len(wallets)} wallets')
 
-    excel = Excel(eval(f'{answer}_data'))
-    eval(f'main_{answer}(wallets={wallets}, excel=excel)')
+    excel = Excel(eval(f'{func_run.__name__}_data'))
+    eval(f'{func_run.__name__}(wallets={wallets}, excel=excel)')
 
 
 if __name__ == "__main__":
