@@ -3,7 +3,7 @@ import aiohttp
 import json
 from web3 import Web3
 from add_loguru import logger
-from data.datatypes.altlayerdt import AltLayerPars
+from data.datatypes.pypars import AltLayerPars
 
 
 async def excel_write(address: str, quantity: float, excel):

@@ -19,7 +19,8 @@ class Modul:
         f"""\033[36m Developed by @Irorsss \033[m
          \033[96m
  1. [Alt Layer]
- \033[m """
+ 2. [Orbiter Points]
+\033[m """
 
     )
 
@@ -27,5 +28,6 @@ class Modul:
 Modul.MODUL = int(input("\033[94m---➜ \033[0m "))
 
 MODULS = {
-    1: ('Alt Layer', main_altlayer)
+    1: ('Alt Layer', main_altlayer),
+    2: ('Orbiter Points', main_orbiter)
 }
