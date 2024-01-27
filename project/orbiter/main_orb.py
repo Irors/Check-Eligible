@@ -10,11 +10,10 @@ async def excel_write(address: str, quantity, excel):
     excel.sheet.append(data)
 
 
-async def request_send(address: str, params: dict, excel, semaphore, proxy):
+async def request_send(address: str, params: dict, excel, proxy):
     try:
 
-        async with aiohttp.ClientSession() as session:
-            await semaphore.acquire()
+        async with aiohttp.ClientSession(trust_env=True) as session:
             response = await session.get(
                 f'https://api.orbiter.finance/points_system/v2/user/points',
                 params=params,
@@ -48,12 +47,11 @@ async def make_data(address):
     return data
 
 
-async def make_request(wallets: list, excel, semaphore, proxy):
+async def make_request(wallets: list, excel, proxy):
     tasks = [
         request_send(address,
                      await make_param(address),
                      excel,
-                     semaphore,
                      proxy)
         for address in wallets]
 
@@ -67,10 +65,9 @@ def main_orbiter(wallets: list[str], excel, proxy):
     else:
         proxy = itertools.cycle([None])
 
-    semaphore = asyncio.Semaphore(value=200)
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    loop.run_until_complete(make_request(wallets, excel, semaphore, next(proxy)))
+    loop.run_until_complete(make_request(wallets, excel, next(proxy)))
 
     excel.workbook.save('result/Orbiter.xlsx')
     logger.info('Check is over. The results are recorded in result')
