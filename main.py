@@ -17,7 +17,7 @@ def main():
         proxy = [row.strip() for row in file]
 
     add_logger()
-    loguru.logger.info(f'Found {len(wallets)} wallets')
+    loguru.logger.info(f'{project} | Found {len(wallets)} wallets')
 
     excel = Excel(data)
     eval(f'{func_run.__name__}(wallets={wallets}, excel=excel, proxy=proxy)')
