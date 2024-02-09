@@ -21,6 +21,7 @@ class Modul:
  1. [Alt Layer]
  2. [Orbiter Points]
  3. [Mode]
+ 4. [Meme]
 \033[m """
 
     )
@@ -31,5 +32,7 @@ Modul.MODUL = int(input("\033[94m---➜ \033[0m "))
 MODULS = {
     1: ('Alt Layer', main_altlayer),
     2: ('Orbiter Points', main_orbiter),
-    3: ('Mode', main_mode)
+    3: ('Mode', main_mode),
+    4: ('Meme', main_meme),
+
 }
