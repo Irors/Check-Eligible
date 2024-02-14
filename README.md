@@ -32,5 +32,7 @@
  - #### **[ Mode ]**
 
  - #### **[ Meme( ROBOT/HUMAN ) ]**
+   
+ - #### **[ Starknet(STRK) ]**
 ---
 **По любым вопросам писать в тг - @Irorssss**
