@@ -22,6 +22,7 @@ class Modul:
  2. [Orbiter Points]
  3. [Mode]
  4. [Meme]
+ 5. [Starknet(STRK)]
 \033[m """
 
     )
@@ -34,5 +35,5 @@ MODULS = {
     2: ('Orbiter Points', main_orbiter),
     3: ('Mode', main_mode),
     4: ('Meme', main_meme),
-
+    5: ('Starknet(STRK)', main_starknet),
 }

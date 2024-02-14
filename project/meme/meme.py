@@ -23,7 +23,7 @@ async def request_send_info_bots(account: str, excel):
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-site',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-    }) as session:
+    }, trust_env=True) as session:
         response = await session.get('https://memefarm-api.memecoin.org/user/results',
                                      proxy='http://' + str(account.proxy))
         result = await response.json(content_type=None)
@@ -33,7 +33,7 @@ async def request_send_info_bots(account: str, excel):
 
 async def request_send_access(account: str, json_data: dict, excel):
     async with aiohttp.ClientSession(headers={'origin': 'https://www.memecoin.org',
-                                              'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}) as session:
+                                              'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}, trust_env=True) as session:
 
         response = await session.post('https://memefarm-api.memecoin.org/user/wallet-auth', json=json_data,
                                       proxy='http://' + str(account.proxy))
@@ -76,6 +76,7 @@ async def make_request(accounts: list, excel):
 def meme_m(accounts: list[ETHClient], excel):
     logger.info(f"I'm starting to check the accounts for ROBOT/HUMAN...")
     loop = asyncio.new_event_loop()
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.set_event_loop(loop)
     loop.run_until_complete(make_request(accounts, excel))
 
