@@ -10,7 +10,7 @@ from add_loguru import add_logger
 def main():
     project, func_run = MODULS[Modul.MODUL]
 
-    with open('data/wallets_evm.txt') as file:
+    with open('data/wallets.txt') as file:
         wallets = [row.strip() for row in file]
 
     with open('data/proxy.txt') as file:
