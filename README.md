@@ -34,5 +34,7 @@
  - #### **[ Meme( ROBOT/HUMAN ) ]**
    
  - #### **[ Starknet(STRK) ]**
+
+ - #### **[ ZetaChain XP ]**
 ---
 **По любым вопросам писать в тг - @Irorssss**

@@ -13,3 +13,6 @@ class AltLayerPars(BaseModel):
     address: str
     amount: str
 
+
+class ZetaPars(BaseModel):
+    totalXp: int = None

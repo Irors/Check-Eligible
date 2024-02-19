@@ -1,4 +1,6 @@
 import random
+from add_loguru import logger
+
 from project import *
 
 RANDOM_PREFIX = [
@@ -23,12 +25,17 @@ class Modul:
  3. [Mode]
  4. [Meme]
  5. [Starknet(STRK)]
+ 6. [ZetaChain]
 \033[m """
 
     )
 
 
-Modul.MODUL = int(input("\033[94m---➜ \033[0m "))
+try:
+    Modul.MODUL = int(input("\033[94m---➜ \033[0m "))
+except ValueError:
+    logger.error('Write number!')
+    exit()
 
 MODULS = {
     1: ('Alt Layer', main_altlayer),
@@ -36,4 +43,5 @@ MODULS = {
     3: ('Mode', main_mode),
     4: ('Meme', main_meme),
     5: ('Starknet(STRK)', main_starknet),
+    6: ('ZetaChain', main_zeta),
 }
