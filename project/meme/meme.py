@@ -9,6 +9,27 @@ async def excel_write(address: str, quantity, excel):
     excel.sheet.append(data)
 
 
+async def get_points(account: str):
+    async with aiohttp.ClientSession(headers={
+        'authority': 'memefarm-api.memecoin.org',
+        'accept': 'application/json',
+        'accept-language': 'ru',
+        'authorization': 'Bearer ' + account.accessToken,
+        'origin': 'https://www.memecoin.org',
+        'sec-ch-ua': '"Google Chrome";v="119", "Chromium";v="119", "Not?A_Brand";v="24"',
+        'sec-ch-ua-mobile': '?0',
+        'sec-ch-ua-platform': '"Windows"',
+        'sec-fetch-dest': 'empty',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-site': 'same-site',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+    }, trust_env=True) as session:
+        response = await session.get('https://memefarm-api.memecoin.org/user/tasks',
+                                     proxy='http://' + str(account.proxy))
+        result = await response.json(content_type=None)
+        return result['points']['current']
+
+
 async def request_send_info_bots(account: str, excel):
     async with aiohttp.ClientSession(headers={
         'authority': 'memefarm-api.memecoin.org',
@@ -27,18 +48,20 @@ async def request_send_info_bots(account: str, excel):
         response = await session.get('https://memefarm-api.memecoin.org/user/results',
                                      proxy='http://' + str(account.proxy))
         result = await response.json(content_type=None)
+
         await excel_write(address=account.address, quantity='ROBOT' if result['results'][0]['won'] == False else
-        'HUMAN', excel=excel)
+        await get_points(account), excel=excel)
 
 
 async def request_send_access(account: str, json_data: dict, excel):
     async with aiohttp.ClientSession(headers={'origin': 'https://www.memecoin.org',
-                                              'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}, trust_env=True) as session:
+                                              'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'},
+                                     trust_env=True) as session:
 
         response = await session.post('https://memefarm-api.memecoin.org/user/wallet-auth', json=json_data,
                                       proxy='http://' + str(account.proxy))
-        result = await response.json(content_type=None)
 
+        result = await response.json(content_type=None)
         if 'unauthorized' in str(result):
             account.accessToken = 0
         else:
