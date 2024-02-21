@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 example:
 wallets 1
 wallets 2
 wallets 3
-=======
-wallet 1
-wallet 2
-wallet 3
-...
->>>>>>> bbd0e00 (fix wallets.txt)
+
