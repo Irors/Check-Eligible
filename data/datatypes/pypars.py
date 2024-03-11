@@ -16,3 +16,11 @@ class AltLayerPars(BaseModel):
 
 class ZetaPars(BaseModel):
     totalXp: int = None
+
+
+class zkTLend(BaseModel):
+    value: str
+
+
+class zkLend(BaseModel):
+    amount: zkTLend

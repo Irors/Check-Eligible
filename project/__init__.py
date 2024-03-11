@@ -5,3 +5,4 @@ from .meme.main import main_meme
 from .starknet.main_strk import main_starknet
 from .zetachain.main_zeta import main_zeta
 from .optimism_airdrop4.main_opt import main_opt
+from .zkLend.main_zkLend import main_zklend

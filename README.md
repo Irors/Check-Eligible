@@ -36,5 +36,7 @@
  - #### **[ Starknet(STRK) ]**
 
  - #### **[ ZetaChain XP ]**
+
+ - #### **[ zkLend ]**
 ---
 **По любым вопросам писать в тг - @Irorssss**

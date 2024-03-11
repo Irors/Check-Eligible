@@ -27,6 +27,7 @@ class Modul:
  5. [Starknet(STRK)]
  6. [ZetaChain]
  7. [Optimism 4 airdrop]
+ 8. [zkLend]
 \033[m """
 
     )
@@ -46,4 +47,5 @@ MODULS = {
     5: ('Starknet(STRK)', main_starknet),
     6: ('ZetaChain', main_zeta),
     7: ('Optimism 4 airdrop', main_opt),
+    8: ('zkLend', main_zklend),
 }
