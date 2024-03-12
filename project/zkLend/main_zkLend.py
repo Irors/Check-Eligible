@@ -14,7 +14,7 @@ async def request_send(address: str, params: dict, excel, proxy):
     try:
         async with aiohttp.ClientSession(trust_env=True) as session:
             response = await session.get(
-                f'https://data.app.zklend.com/airdrop/{address.lower()}',
+                f'https://app.zklend.com/api/airdrop/{address.lower()}',
                 proxy='http://' + proxy if proxy else None)
 
             response = await response.json()
