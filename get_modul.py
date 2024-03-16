@@ -28,6 +28,7 @@ class Modul:
  6. [ZetaChain]
  7. [Optimism 4 airdrop]
  8. [zkLend]
+ 9. [etherfi]
 \033[m """
 
     )
@@ -48,4 +49,5 @@ MODULS = {
     6: ('ZetaChain', main_zeta),
     7: ('Optimism 4 airdrop', main_opt),
     8: ('zkLend', main_zklend),
+    9: ('etherfi', main_etherfi),
 }
