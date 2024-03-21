@@ -24,3 +24,7 @@ class zkTLend(BaseModel):
 
 class zkLend(BaseModel):
     amount: zkTLend
+
+
+class nim(BaseModel):
+    amount: float = None
