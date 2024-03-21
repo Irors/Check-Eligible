@@ -30,6 +30,7 @@ class Modul:
  8. [zkLend]
  9. [etherfi]
  10. [nim]
+ 11. [dappbay]
 \033[m """
 
     )
@@ -52,4 +53,5 @@ MODULS = {
     8: ('zkLend', main_zklend),
     9: ('etherfi', main_etherfi),
     10: ('nim', main_nim),
+    11: ('dappbay', main_dappbay),
 }

@@ -8,3 +8,4 @@ from .optimism_airdrop4.main_opt import main_opt
 from .zkLend.main_zkLend import main_zklend
 from .etherfi.etherfi import main_etherfi
 from .nim.main_nim import main_nim
+from .dappbay.main_dappbay import main_dappbay
