@@ -7,5 +7,6 @@ from .zetachain.main_zeta import main_zeta
 from .optimism_airdrop4.main_opt import main_opt
 from .zkLend.main_zkLend import main_zklend
 from .etherfi.etherfi import main_etherfi
-from .nim.main_nim import main_nim
 from .dappbay.main_dappbay import main_dappbay
+from .linea_poh.main_linea_poh import main_linea_poh
+from .deep.main_deep import main_deep

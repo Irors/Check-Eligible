@@ -20,17 +20,12 @@ class Modul:
     print(
         f"""\033[36m Developed by @Irorsss \033[m
          \033[96m
- 1. [Alt Layer]
- 2. [Orbiter Points]
- 3. [Mode]
- 4. [Meme]
- 5. [Starknet(STRK)]
- 6. [ZetaChain]
- 7. [Optimism 4 airdrop]
- 8. [zkLend]
- 9. [etherfi]
- 10. [nim]
- 11. [dappbay]
+ 1. [Orbiter Points]
+ 2. [Mode]
+ 3. [ZetaChain]
+ 4. [dappbay]
+ 5. [Linea-POH]
+ 6. [DEEP]
 \033[m """
 
     )
@@ -43,15 +38,10 @@ except ValueError:
     exit()
 
 MODULS = {
-    1: ('Alt Layer', main_altlayer),
-    2: ('Orbiter Points', main_orbiter),
-    3: ('Mode', main_mode),
-    4: ('Meme', main_meme),
-    5: ('Starknet(STRK)', main_starknet),
-    6: ('ZetaChain', main_zeta),
-    7: ('Optimism 4 airdrop', main_opt),
-    8: ('zkLend', main_zklend),
-    9: ('etherfi', main_etherfi),
-    10: ('nim', main_nim),
-    11: ('dappbay', main_dappbay),
+    1: ('Orbiter Points', main_orbiter),
+    2: ('Mode', main_mode),
+    3: ('ZetaChain', main_zeta),
+    4: ('dappbay', main_dappbay),
+    5: ('Linea-POH', main_linea_poh),
+    6: ('DEEP', main_deep),
 }
