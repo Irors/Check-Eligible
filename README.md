@@ -25,23 +25,13 @@
 ---
 # Доступные проекты:
 
- - #### **[ Alt layer ]**
-
  - #### **[ Orbiter Points ]**
     
  - #### **[ Mode ]**
 
  - #### **[ Meme( ROBOT/HUMAN ) ]**
-   
- - #### **[ Starknet(STRK) ]**
 
  - #### **[ ZetaChain XP ]**
-
- - #### **[ zkLend ]**
-
- - #### **[ etherfi ]**
-
- - #### **[ nim ]**
 
  - #### **[ Linea-POH ]**
 
